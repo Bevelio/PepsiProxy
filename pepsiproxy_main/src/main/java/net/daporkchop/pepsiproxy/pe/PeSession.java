@@ -1,5 +1,7 @@
-package net.daporkchop.pepsiproxy.api;
+package net.daporkchop.pepsiproxy.pe;
 
+import net.daporkchop.pepsiproxy.api.ISession;
+import net.daporkchop.pepsiproxy.api.ITranslator;
 import net.marfgamer.jraknet.session.RakNetSession;
 
 public class PeSession implements ISession {
@@ -7,5 +9,10 @@ public class PeSession implements ISession {
 
     public PeSession(RakNetSession session) {
         this.session = session;
+    }
+
+    public ITranslator getTranslator()  {
+        return null;
+        //TODO
     }
 }

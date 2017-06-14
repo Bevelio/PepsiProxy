@@ -2,7 +2,10 @@ package net.daporkchop.pepsiproxy.api;
 
 import java.util.List;
 
-public interface IServer<T extends ISession> {
+/**
+ * Handles all client connections
+ */
+public interface IServer<T extends ISession, clientPacketType extends Object> {
     public default void addSession(T session)    {
         getClients().add(session);
     }
@@ -12,4 +15,6 @@ public interface IServer<T extends ISession> {
     }
 
     public List<T> getClients();
+
+    public void recievePacket(clientPacketType type);
 }
