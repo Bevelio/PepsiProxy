@@ -1,6 +1,5 @@
 package net.daporkchop.pepsiproxy;
 
-
 import net.daporkchop.pepsiproxy.api.IProxy;
 
 public class PepsiProxy {
