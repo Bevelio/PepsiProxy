@@ -1,0 +1,3 @@
+[submodule "sel-utils"]
+	path = sel-utils
+	url = https://github.com/sel-utils/java.git
