@@ -1,8 +1,5 @@
-
-\.idea/
-
+.idea/
 *.iml
-
 target/
-
-pepsiproxy_main/dependency-reduced-pom\.xml
+dependency-reduced-pom\.xml
+run/

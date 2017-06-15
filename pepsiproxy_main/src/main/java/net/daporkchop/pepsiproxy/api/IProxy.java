@@ -1,7 +1,17 @@
 package net.daporkchop.pepsiproxy.api;
 
-public interface IProxy {
-    public void addSession(ISession session);
+import java.util.List;
 
-    public void removeSession(ISession session);
+public interface IProxy<serverType extends IServer, clientType extends IClient> {
+    public serverType getServer();
+
+    public List<clientType> getClients();
+
+    public default void addClient(clientType toAdd) {
+        getClients().add(toAdd);
+    }
+
+    public default void removeClient(clientType toRemove) {
+        getClients().remove(toRemove);
+    }
 }
