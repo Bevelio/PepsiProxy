@@ -15,6 +15,8 @@ public class LoginStartTranslator implements IPeTranslator<LoginStartPacket> {
         Login toSend = new Login();
         toSend.version = 0; //vanilla
                             //1 would be education edition
+        Buffer buffer = new Buffer();
+
         //TODO: encode data
         return null;
     }
