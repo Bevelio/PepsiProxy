@@ -1,4 +1,4 @@
-package net.daporkchop.pepsiproxy.pe.server.raknet;
+package net.daporkchop.pepsiproxy.pe.server;
 
 import net.marfgamer.jraknet.RakNetPacket;
 import net.marfgamer.jraknet.server.RakNetServerListener;

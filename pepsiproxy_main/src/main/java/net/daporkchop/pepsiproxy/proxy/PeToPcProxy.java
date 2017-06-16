@@ -2,7 +2,7 @@ package net.daporkchop.pepsiproxy.proxy;
 
 import net.daporkchop.pepsiproxy.api.IProxy;
 import net.daporkchop.pepsiproxy.pc.client.PcClient;
-import net.daporkchop.pepsiproxy.pe.server.raknet.PeServer;
+import net.daporkchop.pepsiproxy.pe.server.PeServer;
 
 import java.util.ArrayList;
 import java.util.List;

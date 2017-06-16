@@ -1,8 +1,7 @@
 package net.daporkchop.pepsiproxy.api;
 
 /**
- * Placeholder class :P
+ * Placeholder
  */
 public interface ITranslator {
-
 }
