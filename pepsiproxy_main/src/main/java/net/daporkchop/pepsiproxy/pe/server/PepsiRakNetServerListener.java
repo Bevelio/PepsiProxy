@@ -3,6 +3,7 @@ package net.daporkchop.pepsiproxy.pe.server;
 import net.marfgamer.jraknet.RakNetPacket;
 import net.marfgamer.jraknet.server.RakNetServerListener;
 import net.marfgamer.jraknet.session.RakNetClientSession;
+import sul.protocol.raknet8.encapsulated.Mcpe;
 
 public class PepsiRakNetServerListener implements RakNetServerListener {
     public final PeServer server;
@@ -15,7 +16,7 @@ public class PepsiRakNetServerListener implements RakNetServerListener {
     // Client connected
     public void onClientConnect(RakNetClientSession session) {
         System.out.println("PE session " + session.getAddress() + " joined!!!");
-        server.addSession(new PeServerSession(session));
+        server.addSession(new PeServerSession(session, server));
         System.out.println("PE session " + session.getAddress() + " joined again!!!");
     }
 
@@ -29,5 +30,8 @@ public class PepsiRakNetServerListener implements RakNetServerListener {
     // Packet received
     public void handleMessage(RakNetClientSession session, RakNetPacket packet, int channel) {
         System.out.println("Client from address " + session.getAddress() + " sent packet with ID 0x" + Integer.toHexString(packet.getId()).toUpperCase() + " on channel " + channel);
+        if (packet.getId() == 0xFE) {
+            Mcpe mcpe = Mcpe.fromBuffer(packet.array());
+        }
     }
 }
