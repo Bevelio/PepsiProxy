@@ -1,19 +1,13 @@
 package net.daporkchop.pepsiproxy;
 
-import com.github.steveice10.mc.protocol.MinecraftProtocol;
-import com.github.steveice10.packetlib.Client;
-import com.github.steveice10.packetlib.tcp.TcpSessionFactory;
 import net.daporkchop.pepsiproxy.api.IProxy;
-import net.daporkchop.pepsiproxy.pc.client.PcClient;
-import net.daporkchop.pepsiproxy.pc.client.PcClientListener;
 import net.daporkchop.pepsiproxy.pe.server.PeServer;
 import net.daporkchop.pepsiproxy.pe.server.PepsiRakNetServerListener;
 import net.daporkchop.pepsiproxy.pe.server.raknet.RakNetServerTools;
-import net.daporkchop.pepsiproxy.proxy.PeToPcProxy;
 
 public class PepsiProxy {
+    public static boolean pe_mode = true;
     private static PepsiProxy INSTANCE;
-
     public IProxy proxy;
 
     public static void main(String[] args)  {
@@ -34,12 +28,5 @@ public class PepsiProxy {
         System.out.println("Event listener initalized!");
         server.rakNetServer.startThreaded();
         System.out.println("Done! Accepting connections now!");
-        MinecraftProtocol protocol = new MinecraftProtocol("_DaPorkchop_");
-        Client protocolLibClient = new Client("play.extremecraft.net", 25565, protocol, new TcpSessionFactory());
-        PcClientListener pcClientListener;
-        protocolLibClient.getSession().addListener(pcClientListener = new PcClientListener());
-        PcClient client = new PcClient(server, protocolLibClient, protocol, pcClientListener);
-        PeToPcProxy proxy = new PeToPcProxy(server, client);
-        this.proxy = proxy;
     }
 }

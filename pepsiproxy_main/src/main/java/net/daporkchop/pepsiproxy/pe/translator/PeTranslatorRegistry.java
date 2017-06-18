@@ -5,10 +5,7 @@ import com.github.steveice10.mc.protocol.packet.login.client.EncryptionResponseP
 import com.github.steveice10.mc.protocol.packet.login.server.EncryptionRequestPacket;
 import com.github.steveice10.packetlib.packet.Packet;
 import net.daporkchop.pepsiproxy.api.IPeTranslator;
-import net.daporkchop.pepsiproxy.pe.server.PeServer;
-import net.daporkchop.pepsiproxy.pe.server.PeServerSession;
 import net.daporkchop.pepsiproxy.pe.translator.translators.server.HandshakeTranslator;
-import net.marfgamer.jraknet.RakNetPacket;
 
 import java.util.HashMap;
 
@@ -44,8 +41,3 @@ public abstract class PeTranslatorRegistry {
     }
 }
 
-class IgnoreTranslator implements IPeTranslator {
-    public RakNetPacket[] toPe(Packet packet, PeServerSession session, PeServer server)   {
-        return null;
-    }
-}
