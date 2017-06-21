@@ -1,5 +1,6 @@
 package net.daporkchop.pepsiproxy.pe.server;
 
+import net.daporkchop.pepsiproxy.pc.translator.PcTranslatorRegistry;
 import net.daporkchop.pepsiproxy.pe.translator.PePacketGenerator;
 import net.marfgamer.jraknet.RakNetPacket;
 import net.marfgamer.jraknet.server.RakNetServerListener;
@@ -32,8 +33,18 @@ public class PepsiRakNetServerListener implements RakNetServerListener {
         if (packet.getId() == 0xFE) {
             Mcpe mcpe = Mcpe.fromBuffer(packet.array());
             System.out.println("MCPE packet id: 0x" + Integer.toHexString(mcpe.packet[0]));
+            String s = "";
+            for (byte b : packet.array()) {
+                s += b + ",";
+            }
+            System.out.println(s);
+            s = "";
+            for (byte b : mcpe.packet) {
+                s += b + ",";
+            }
+            System.out.println(s);
             Packet pck = PePacketGenerator.getFromByteArray(mcpe.packet);
-
+            PcTranslatorRegistry.translateFromClient(pck, session, server, server.getPeSessionFromRakNetClientSession(session));
         }
     }
 }

@@ -35,25 +35,31 @@ public abstract class Zlib {
         return bos.toByteArray();
     }
 
-    public static byte[] inflate(InputStream stream) throws IOException {
-        InflaterInputStream inputStream = new InflaterInputStream(stream);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        byte[] buffer = new byte[1024];
-        int length;
+    public static byte[] inflate(InputStream stream) {
+        try {
+            InflaterInputStream inputStream = new InflaterInputStream(stream);
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int length;
 
-        while ((length = inputStream.read(buffer)) != -1) {
-            outputStream.write(buffer, 0, length);
+            while ((length = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, length);
+            }
+
+            buffer = outputStream.toByteArray();
+            outputStream.flush();
+            outputStream.close();
+            inputStream.close();
+
+            return buffer;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        buffer = outputStream.toByteArray();
-        outputStream.flush();
-        outputStream.close();
-        inputStream.close();
-
-        return buffer;
+        return null;
     }
 
-    public static byte[] inflate(byte[] data) throws IOException {
+    public static byte[] inflate(byte[] data) {
         return inflate(new ByteArrayInputStream(data));
     }
 
